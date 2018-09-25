@@ -8,23 +8,25 @@ public class StringUtils {
      * Ex: a = "Sean ", b = "Flannery", returns "sflanner"
      */
     public static String makePurdueUsername(String firstName, String lastName) {
+        firstName=firstName.toLowerCase();
+        lastName=lastName.toLowerCase();
         /* Generate the long version of the name first:
             Ex: firstName = "Sean", lastName = "Flannery"
                     --> res = "SFlannery"
          */
-        String res = firstName.substring(0,1) + lastName;
+        String res = "";
+        res = firstName.substring(0,1) + lastName;
         /* Shorten the string to 8 characters
             Ex: res = "SFlannery"
                     --> res = "SFlanner"
          */
-        res.substring(0, 8);
-        /* Convert the name to lower-case
-            Ex: res = "SFlanner"
-                    --> res = "sflanner"
-         */
-        res.toLowerCase();
-        /* return the result of our calculation */
-        return res;
+        if(res.length()<=8){
+            return res;
+        }
+        else{
+            res = res.substring(0, Math.min(res.length(),8));
+            return res;
+        }
     }
 
     /**
@@ -36,6 +38,6 @@ public class StringUtils {
      */
     public static String replaceStudentUsername(String text, String username) {
         /* Replace every instance of the username with proper message */
-        return text.replaceAll(username, "[DATA EXPUNDGED]");
-    }
+        return text.replaceAll(username, "[DATA EXPUNGED]");
+   }
 }
